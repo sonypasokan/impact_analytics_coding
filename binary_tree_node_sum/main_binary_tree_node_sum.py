@@ -8,8 +8,8 @@ class Parser:
     
     def get_json_data(self):
         """Method to get the json."""
-        args = self.__command_line_reader()
-        json_data = self.__validate_input_and_get_json(args)
+        json_file_path = self.__get_json_file_from_user()
+        json_data = self.__validate_input_and_get_json(json_file_path)
         return self.__json_parser(json_data)
 
     # Private methods
@@ -26,39 +26,23 @@ class Parser:
             node_map[node_info["id"]] = node_info
         return root_node, node_map
     
-    def __command_line_reader(self):
-        """Method that gets input as command line argument
-        and returns the parser object."""
-        parser = argparse.ArgumentParser()
-        parser.add_argument('-f', '--file_name', help="Provide the path to a JSON file",
-            type=str, required=False
-        )
-        parser.add_argument('-s', '--string', help="Provide a JSON string",
-            type=str, required=False
-        )
-        args = parser.parse_args()
-        return args
+    def __get_json_file_from_user(self):
+        json_file_path = input("Enter the JOSN file path:")
+        return json_file_path
     
-    def __validate_input_and_get_json(self, args):
+    def __validate_input_and_get_json(self, json_file_path):
         """Method to validate the input read from CLI
         and reads the JSON object.
         @args: ArgumentParser object"""
-        if not args.file_name and not args.string:
-            print("Error: One of file name or string is mandatory")
+        error_message = "Error: Please provide valid JSON file as input."
+        if not json_file_path:
+            print(error_message)
             exit(1)
-        json_data = None
-        if args.file_name:
-            if not path.exists(path.abspath(args.file_name)) or not args.file_name.endswith(".json"):
-                print("Error: Please provide valid JSON file")
-                exit(1)
-            with open(args.file_name, 'r') as fp:
-                json_data = json.load(fp)
-        elif args.string:
-            try:
-                json_data = json.loads(args.string)
-            except json.decoder.JSONDecodeError:
-                print("Error: Please provide valid JSON string.")
-                exit(1)
+        if not path.exists(path.abspath(json_file_path)) or not json_file_path.endswith(".json"):
+            print(error_message)
+            exit(1)
+        with open(json_file_path, 'r') as fp:
+            json_data = json.load(fp)
         return json_data
 
         
