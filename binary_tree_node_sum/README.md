@@ -9,18 +9,19 @@ Main file is: main_binary_tree_node_sum.py
 3.8.5
 
 # How to run
-To know how to run the script, call
-> python3 main_binary_tree_node_sum.py -h
-
-## Inputs accepted as command line arguments
-1. File name(-f): Path to a JSON file.
-2. JSON String(-s): JSON in String format.
+Run the program as
+> python3 main_binary_tree_node_sum.py
+It will ask you to enter the JSON file path. Once pressed enter, it will return the sum of depth
+if the given JSON file is valid. Else, the program will exit with an error message.
 
 ## Example to run a JSON file
-> python3 main_binary_tree_node_sum.py -f input_1.json
-
-## Example to input a JSON string
->python3 main_binary_tree_node_sum.py -s "{\\"tree\\":{\\"nodes\\":[{\\"id\\":\\"1\\",\\"left\\":\\"2\\",\\"right\\":null,\\"value\\":1},{\\"id\\":\\"2\\",\\"left\\":null,\\"right\\":null,\\"value\\":2}],\\"root\\":\\"1\\"}}"
+> python3 main_binary_tree_node_sum.py
+Now the program will ask you for a JSON file path:
+> Enter the JOSN file path:
+As an example, provide input_1.json as follows:
+> Enter the JOSN file path: input_1.json
+Then the output will be displayed:
+> Sum of depth of nodes = 20
 
 # Function that calculates Sum of depths of all nodes
 The function that calculates the Sum of depths of nodes is present in binary_tree_operation/BinaryTreeSum class.
