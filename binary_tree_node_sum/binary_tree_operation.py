@@ -22,6 +22,7 @@ class BinaryTreeSum:
         self.root = self.__build_binary_tree(self.root, root_id, json_data)
         return self.root
     
+    # Private methods
     def __build_binary_tree(self, root, node_id, json_data):
         """Private methods that internally builds the Binary tree with given JSON.
         @root: Object of BinaryTree class, means any node in the Binary Tree.
@@ -34,14 +35,17 @@ class BinaryTreeSum:
             new_node.right = self.__build_binary_tree(new_node, json_data[node_id]["right"], json_data)
         return new_node
     
-    def __binary_tree_node_sum(self, root, depth=0):
+    def __binary_tree_node_sum(self, root, depth=0, node_type=None):
         """Private method that internally calculates the sum of depths of all nodes.
         @root: Start node of the Binary Tree.
         @depth: Depth of the current node. For start node, depth will be 0."""
         if root == None:
             return self.node_sum
-        self.node_sum += depth
-        self.__binary_tree_node_sum(root.left, depth=depth+1)
-        self.__binary_tree_node_sum(root.right, depth= depth+1)
+        multiplication_factor = 1
+        if node_type == "left" and depth % 2 == 0:
+            multiplication_factor = 2
+        self.node_sum += depth * multiplication_factor
+        self.__binary_tree_node_sum(root.left, depth=depth+1, node_type="left")
+        self.__binary_tree_node_sum(root.right, depth= depth+1, node_type="right")
         return self.node_sum
 
