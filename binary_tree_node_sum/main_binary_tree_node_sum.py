@@ -27,7 +27,7 @@ class Parser:
         return root_node, node_map
     
     def __get_json_file_from_user(self):
-        json_file_path = input("Enter the JOSN file path:")
+        json_file_path = input("Enter the JOSN file path: ")
         return json_file_path
     
     def __validate_input_and_get_json(self, json_file_path):
@@ -51,7 +51,7 @@ def main():
     bts = BinaryTreeSum()
     root = bts.build_binary_tree(root_id, node_map)
     output = bts.BinaryTreeNodeDepthSum(root)
-    print("output =", output)
+    print("Sum of depth of nodes =", output)
 
 
 if __name__ == "__main__":
