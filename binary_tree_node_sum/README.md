@@ -1,5 +1,6 @@
 # Problem Statement
-Find the sum of depths of all nodes of a Binary Tree
+Find the sum of depths of all nodes of a Binary Tree.
+If the node is the left child of parent and is at even depth, then it's depth should be doubled.
 
 # Main file
 Main file is: main_binary_tree_node_sum.py
