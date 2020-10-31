@@ -41,8 +41,12 @@ class Parser:
         if not path.exists(path.abspath(json_file_path)) or not json_file_path.endswith(".json"):
             print(error_message)
             exit(1)
-        with open(json_file_path, 'r') as fp:
-            json_data = json.load(fp)
+        try:
+            with open(json_file_path, 'r') as fp:
+                json_data = json.load(fp)
+        except json.JSONDecodeError:
+            print(error_message)
+            exit(1)
         return json_data
 
         
