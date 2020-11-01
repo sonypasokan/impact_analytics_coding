@@ -11,15 +11,18 @@ Main file is: main_binary_tree_node_sum.py
 # How to run
 Run the program as
 > python3 main_binary_tree_node_sum.py
-It will ask you to enter the JSON file path. Once pressed enter, it will return the sum of depth
-if the given JSON file is valid. Else, the program will exit with an error message.
+
+It will ask you to enter the JSON file path. Once pressed enter, it will return the sum of depth if the given JSON file is valid. Else, the program will exit with an error message.
 
 ## Example to run a JSON file
 > python3 main_binary_tree_node_sum.py
+
 Now the program will ask you for a JSON file path:
 > Enter the JOSN file path:
+
 As an example, provide input_1.json as follows:
 > Enter the JOSN file path: input_1.json
+
 Then the output will be displayed:
 > Sum of depth of nodes = 20
 
